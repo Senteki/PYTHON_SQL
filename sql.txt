@@ -1,0 +1,19 @@
+Задание 1
+
+SElECT  c.login , 
+	COUNT(o."inDelivery") 
+	FROM "Couriers" as c
+	LEFT JOIN "Orders" AS o ON c.id=o."courierId"
+	WHERE "inDelivery" is true 
+	GROUP BY c.login;
+
+
+Задание 2 
+
+SElECT track, 
+	CASE 
+	WHEN finished = true THEN 2 
+	WHEN cancelled = true THEN -1 
+	WHEN "inDelivery" = true THEN 1 
+	WHEN (finished and cancelled and "inDelivery") = false THEN 0 end AS status 
+FROM "Orders";
