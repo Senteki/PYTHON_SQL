@@ -21,7 +21,7 @@ def test_order_by_track():
     # В response сохраняем результат запроса на получение информации о заказе по треку
     response = sender_stand_request.get_track_order(track)
 
-    # Проверяем код ответа: 200
+    # Проверяем код ответа: -> 200
     assert response.status_code == 200
     print(response)
 
