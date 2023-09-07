@@ -1,4 +1,5 @@
 # Наталья Янчич - 8-я когорта  — Финальный проект. Инженер по тестированию плюс
+
 import configuration
 import requests
 import data
@@ -10,22 +11,14 @@ def post_new_order():
                          json=data.body_order)
 
 
-# Сохранение трека
+# Получаем информацию о заказе по треку
 def get_track_order(track):
     return requests.get(configuration.URL_SERVICE + configuration.TRACK_INFO,
-                        json=data.track,
-                        params={'t': track})
+                        params={"track": track})
 
-
-# Запрос на получение по треку
-def get_order():
-    return requests.get(configuration.URL_SERVICE + configuration.TRACK_INFO,
-                        json=data.body_order)
 
 
 response = post_new_order()
-
 print(post_new_order())
-print(get_track_order('t'))
-print(get_order())
+print(get_track_order("track"))
 print(response.json())
